@@ -69,6 +69,14 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeCountdown();
     initializeCarousel();
     setupModalButtons();
+
+    // Fallback: ocultar el modal si por alguna razón queda bloqueando la vista (p. ej., en GitHub Pages)
+    const modal = document.getElementById('welcomeModal');
+    setTimeout(() => {
+        if (modal && getComputedStyle(modal).display !== 'none') {
+            modal.style.display = 'none';
+        }
+    }, 1500);
 });
 
 // También configurar cuando la página esté completamente cargada

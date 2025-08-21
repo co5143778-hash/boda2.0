@@ -165,6 +165,13 @@ body {
     z-index: 1;
 }
 
+@media (max-width: 1024px) {
+    .hero-section {
+        background-attachment: scroll; /* evita bug de pantalla negra en móviles */
+        background-color: #111; /* fallback paint */
+    }
+}
+
 .hero-overlay {
     position: absolute;
     inset: 0;
