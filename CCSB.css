@@ -1127,4 +1127,27 @@ button[class*="carousel"] {
 
 .framed-photo:hover { box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
 
+/* Ajuste de separación entre ítems para que queden más juntas sin cambiar la sección */
+.carousel-track { gap: 0.5rem; padding: 0.25rem; }
+
+/* Mantener 3 en desktop sin cambiar altura de sección */
+.carousel-item { flex: 0 0 calc(33.333% - 0.333rem); }
+
+/* Imagen polaroid rectangular más grande dentro del item, sin tocar altura de .carousel-item */
+.framed-photo {
+    width: 95% !important;        /* más grande dentro del item */
+    height: auto;                 /* respeta proporción */
+    max-width: none;              /* permite ocupar más ancho del item */
+    border-radius: 6px;           /* leve para esquinas del marco */
+}
+
+@media (max-width: 1024px) {
+    .carousel-item { flex: 0 0 calc(50% - 0.25rem); }
+}
+
+@media (max-width: 768px) {
+    .carousel-item { flex: 0 0 100%; }
+    .framed-photo { width: 92% !important; }
+}
+
 
