@@ -1,6 +1,6 @@
 /* Variables CSS */
 :root {
-    --background: 0 0% 5%;
+    --background: 0 0% 0%;
     --foreground: 0 0% 95%;
     --primary: 0 0% 20%;
     --primary-foreground: 0 0% 95%;
@@ -49,7 +49,7 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
-    display: flex;
+    display: none; /* oculto por defecto: evita pantalla negra si JS falla */
     align-items: center;
     justify-content: center;
     z-index: 9999;
@@ -163,6 +163,13 @@ body {
     align-items: center;
     justify-content: center;
     z-index: 1;
+}
+
+@media (max-width: 1024px) {
+    .hero-section {
+        background-attachment: scroll; /* evita bug de pantalla negra en móviles */
+        background-color: #111; /* fallback paint */
+    }
 }
 
 .hero-overlay {
@@ -492,7 +499,7 @@ body {
 /* Line below names */
 .hero-text .names { position: relative; display: inline-block; padding-bottom: 0.5rem; }
 .hero-text .names::after {
-    content: ""; position: absolute; left: 10%; right: 10%; bottom: 0; height: 2px; background: #fff;
+    content: ""; position: absolute; left: 10%; right: 10%; bottom: 0; height: 1px; background: #fff;
 }
 /* Gold ampersand */
 .hero-text .ampersand { color: #c79816; }
@@ -504,7 +511,7 @@ body {
 .quote::before { content: "“"; top: -1.5rem; font-size: 2rem; }
 .quote::after { content: "”"; bottom: -1.75rem; font-size: 2rem; }
 /* Framed carousel images */
-.framed-photo { border: 10px solid #999999; box-sizing: border-box; width: 100% !important; height: auto; }
+.framed-photo { border: 10px solid #999999; border-bottom: 28px solid #999999; border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); display: block; margin: 20px auto 30px; box-sizing: border-box; width: auto !important; max-width: calc(100% - 40px); height: auto; }
 
 .section-subtitle {
     color: hsl(var(--foreground) / 0.7);
@@ -544,6 +551,43 @@ body {
     transition: transform 0.5s ease-in-out;
     gap: 1rem;
     padding: 0.5rem;
+}
+
+/* Carrusel: Bordes con sombra y borde exterior */
+.carousel-track-container {
+    border: 2px solid #999999; /* Borde exterior del carrusel en gris actual */
+    position: relative;
+}
+
+.carousel-track-container::before,
+.carousel-track-container::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 2px solid #999999; /* Bordes de las esquinas en gris */
+    transform: rotate(45deg); /* Forma de diamantes */
+    z-index: 2;
+}
+
+.carousel-track-container::before {
+    top: 8px;
+    left: 8px;
+}
+
+.carousel-track-container::after {
+    bottom: 8px;
+    right: 8px;
+}
+
+/* Estilo para cada item del carrusel */
+.carousel-item {
+    max-height: 520px; /* Limita la altura */
+}
+
+.carousel-item img {
+    border: 1px solid #999999; /* Borde alrededor de cada imagen en gris */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Sombra suave */
 }
 
 /* Cada tarjeta del carrusel */
@@ -1081,5 +1125,43 @@ button[class*="carousel"] {
     display: block !important;
     visibility: visible !important;
 }
+
+/* Tweak hero layout spacing */
+.hero-text .date { margin-bottom: 0.5rem; }
+.hero-text .names { margin-bottom: 1.25rem; }
+.quote { margin-top: 0.25rem; padding-top: 0.25rem; }
+
+/* Bowtie subtle animation */
+.bowtie-icon svg {
+    transition: transform 0.3s ease;
+}
+.bowtie-icon:hover svg {
+    transform: scale(1.06) rotate(1deg);
+}
+
+@media (max-width: 768px) {
+    .carousel-track-container {
+        border: 2px solid #999999; /* Asegura borde en móvil */
+    }
+    .carousel-track-container::before,
+    .carousel-track-container::after {
+        width: 10px;
+        height: 10px;
+        border: 2px solid #999999; /* Asegura color en móvil */
+    }
+    .carousel-track-container::before { top: 6px; left: 6px; }
+    .carousel-track-container::after { bottom: 6px; right: 6px; }
+}
+
+/* Permitir que las sombras no se recorten en el carrusel */
+.carousel-track-container { overflow: visible; }
+.carousel-track { overflow: visible; }
+
+@media (max-width: 768px) {
+    .framed-photo { margin: 16px auto 24px; max-width: calc(100% - 32px); }
+}
+
+/* Hover más intenso para efecto polaroid */
+.framed-photo:hover { box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
 
 
