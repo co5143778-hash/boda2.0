@@ -1,6 +1,6 @@
 /* Variables CSS */
 :root {
-    --background: 0 0% 5%;
+    --background: 0 0% 0%;
     --foreground: 0 0% 95%;
     --primary: 0 0% 20%;
     --primary-foreground: 0 0% 95%;
@@ -499,7 +499,7 @@ body {
 /* Line below names */
 .hero-text .names { position: relative; display: inline-block; padding-bottom: 0.5rem; }
 .hero-text .names::after {
-    content: ""; position: absolute; left: 10%; right: 10%; bottom: 0; height: 2px; background: #fff;
+    content: ""; position: absolute; left: 10%; right: 10%; bottom: 0; height: 1px; background: #fff;
 }
 /* Gold ampersand */
 .hero-text .ampersand { color: #c79816; }
@@ -1088,5 +1088,10 @@ button[class*="carousel"] {
     display: block !important;
     visibility: visible !important;
 }
+
+/* Tweak hero layout spacing */
+.hero-text .date { margin-bottom: 0.5rem; }
+.hero-text .names { margin-bottom: 1.25rem; }
+.quote { margin-top: 0.25rem; padding-top: 0.25rem; }
 
 
