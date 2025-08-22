@@ -511,7 +511,7 @@ body {
 .quote::before { content: "“"; top: -1.5rem; font-size: 2rem; }
 .quote::after { content: "”"; bottom: -1.75rem; font-size: 2rem; }
 /* Framed carousel images */
-.framed-photo { border: 10px solid #999999; box-sizing: border-box; width: 100% !important; height: auto; }
+.framed-photo { border: 1px solid #999999; box-sizing: border-box; width: 100% !important; height: auto; }
 
 .section-subtitle {
     color: hsl(var(--foreground) / 0.7);
@@ -551,6 +551,43 @@ body {
     transition: transform 0.5s ease-in-out;
     gap: 1rem;
     padding: 0.5rem;
+}
+
+/* Carrusel: Bordes con sombra y borde exterior */
+.carousel-track-container {
+    border: 2px solid #999999; /* Borde exterior del carrusel en gris actual */
+    position: relative;
+}
+
+.carousel-track-container::before,
+.carousel-track-container::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 2px solid #999999; /* Bordes de las esquinas en gris */
+    transform: rotate(45deg); /* Forma de diamantes */
+    z-index: 2;
+}
+
+.carousel-track-container::before {
+    top: 8px;
+    left: 8px;
+}
+
+.carousel-track-container::after {
+    bottom: 8px;
+    right: 8px;
+}
+
+/* Estilo para cada item del carrusel */
+.carousel-item {
+    max-height: 520px; /* Limita la altura */
+}
+
+.carousel-item img {
+    border: 1px solid #999999; /* Borde alrededor de cada imagen en gris */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Sombra suave */
 }
 
 /* Cada tarjeta del carrusel */
