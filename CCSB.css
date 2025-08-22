@@ -511,7 +511,7 @@ body {
 .quote::before { content: "“"; top: -1.5rem; font-size: 2rem; }
 .quote::after { content: "”"; bottom: -1.75rem; font-size: 2rem; }
 /* Framed carousel images */
-.framed-photo { border: 1px solid #999999; box-sizing: border-box; width: 100% !important; height: auto; }
+.framed-photo { border: 10px solid #999999; border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); display: block; margin: 20px auto 30px; box-sizing: border-box; width: auto !important; max-width: calc(100% - 40px); height: auto; }
 
 .section-subtitle {
     color: hsl(var(--foreground) / 0.7);
@@ -1152,5 +1152,16 @@ button[class*="carousel"] {
     .carousel-track-container::before { top: 6px; left: 6px; }
     .carousel-track-container::after { bottom: 6px; right: 6px; }
 }
+
+/* Permitir que las sombras no se recorten en el carrusel */
+.carousel-track-container { overflow: visible; }
+.carousel-track { overflow: visible; }
+
+@media (max-width: 768px) {
+    .framed-photo { margin: 16px auto 24px; max-width: calc(100% - 32px); }
+}
+
+/* Hover más intenso para efecto polaroid */
+.framed-photo:hover { box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
 
 
