@@ -1094,4 +1094,12 @@ button[class*="carousel"] {
 .hero-text .names { margin-bottom: 1.25rem; }
 .quote { margin-top: 0.25rem; padding-top: 0.25rem; }
 
+/* Bowtie subtle animation */
+.bowtie-icon svg {
+    transition: transform 0.3s ease;
+}
+.bowtie-icon:hover svg {
+    transform: scale(1.06) rotate(1deg);
+}
+
 
