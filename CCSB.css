@@ -511,7 +511,7 @@ body {
 .quote::before { content: "“"; top: -1.5rem; font-size: 2rem; }
 .quote::after { content: "”"; bottom: -1.75rem; font-size: 2rem; }
 /* Framed carousel images */
-.framed-photo { border: none; border-radius: 0; box-shadow: none; margin: 0; width: 100% !important; max-width: 100%; height: auto; }
+.framed-photo { border: 10px solid #999999; border-bottom: 28px solid #999999; border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); display: block; margin: 20px auto 30px; box-sizing: border-box; width: auto !important; max-width: calc(100% - 40px); height: auto; }
 
 .section-subtitle {
     color: hsl(var(--foreground) / 0.7);
@@ -1120,5 +1120,11 @@ button[class*="carousel"] {
 /* Permitir que las sombras no se recorten en el carrusel */
 .carousel-track-container { overflow: hidden; }
 .carousel-track { overflow: hidden; }
+
+@media (max-width: 768px) {
+    .framed-photo { margin: 16px auto 24px; max-width: calc(100% - 32px); }
+}
+
+.framed-photo:hover { box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
 
 
