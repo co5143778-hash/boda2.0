@@ -1139,4 +1139,18 @@ button[class*="carousel"] {
     transform: scale(1.06) rotate(1deg);
 }
 
+@media (max-width: 768px) {
+    .carousel-track-container {
+        border: 2px solid #999999; /* Asegura borde en móvil */
+    }
+    .carousel-track-container::before,
+    .carousel-track-container::after {
+        width: 10px;
+        height: 10px;
+        border: 2px solid #999999; /* Asegura color en móvil */
+    }
+    .carousel-track-container::before { top: 6px; left: 6px; }
+    .carousel-track-container::after { bottom: 6px; right: 6px; }
+}
+
 
