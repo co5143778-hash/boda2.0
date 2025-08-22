@@ -264,6 +264,35 @@ function updateSlideCounter() {
     }
 }
 
+// Mark center carousel item on desktop
+function markCenterCarouselItem() {
+    if (window.innerWidth <= 1024) return; // only desktop
+    const track = document.getElementById('carouselTrack');
+    if (!track) return;
+    const items = Array.from(track.querySelectorAll('.carousel-item'));
+    if (!items.length) return;
+    // Remove previous center marks
+    items.forEach(it => it.classList.remove('is-center'));
+    // Heuristic: center visible index is currentSlide + 1 in 3-up layout
+    const centerIndex = (currentSlide + 1) % items.length;
+    items[centerIndex].classList.add('is-center');
+}
+
+// Hook into carousel updates
+const _origUpdateCarousel = typeof updateCarousel === 'function' ? updateCarousel : null;
+if (_origUpdateCarousel) {
+    window.updateCarousel = function() {
+        _origUpdateCarousel();
+        markCenterCarouselItem();
+    };
+}
+
+window.addEventListener('resize', markCenterCarouselItem);
+
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(markCenterCarouselItem, 200);
+});
+
 // Funciones de los botones
 function openLocation(location) {
     const addresses = {
