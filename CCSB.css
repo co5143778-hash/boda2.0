@@ -549,16 +549,16 @@ body {
 .carousel-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    gap: 0.25rem; /* casi pegadas */
-    padding: 0; /* sin padding alrededor */
+    gap: 1rem;
+    padding: 0.5rem;
 }
 
 
 /* Cada tarjeta del carrusel */
 .carousel-item {
-    flex: 0 0 calc(100% / 3); /* 3 imágenes visibles en desktop exactas */
-    height: 520px; /* más grande */
-    border-radius: 0; /* cuadrado */
+    flex: 0 0 calc(33.33% - 1rem); /* 3 imágenes visibles en desktop */
+    height: 400px; /* más alto */
+    border-radius: 0; /* sin bordes ni esquinas redondeadas */
     overflow: hidden;
 }
 
@@ -612,15 +612,15 @@ body {
 /* ============================= */
 @media (max-width: 1024px) {
     .carousel-item {
-        flex: 0 0 50%; /* 2 imágenes en tablet */
-        height: 420px; /* proporcional */
+        flex: 0 0 calc(50% - 1rem); /* 2 imágenes en tablet */
+        height: 320px;
     }
 }
 
 @media (max-width: 768px) {
     .carousel-item {
         flex: 0 0 100%; /* 1 imagen en móvil */
-        height: 320px;
+        height: 280px;
     }
 
     .carousel-btn {
@@ -1126,8 +1126,5 @@ button[class*="carousel"] {
 }
 
 .framed-photo:hover { box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
-
-/* Cuadrado polaroid: sin radios en la imagen, marco se mantiene cuadrado */
-.framed-photo { border-radius: 0; }
 
 
